@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102f27">
+  <title>BottleBloom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="welcomeScreen" class="welcome-screen">
+  <div class="welcome-box">
+    <div class="brand-mark">✿</div>
+    <p class="eyebrow">GROW A GREENER TOMORROW</p>
+    <h1>Bottle<span>Bloom</span></h1>
+    <p class="welcome-copy">Small spaces. Reused bottles. Greener possibilities.</p>
+    <label for="userName">What should we call you?</label>
+    <input id="userName" type="text" placeholder="Enter your name" maxlength="35">
+    <button id="startButton" class="primary-btn full-btn">Get Started →</button>
+    <p class="welcome-foot">A little care can make a big difference.</p>
+  </div>
+</section>
+
+<div id="app" class="app-shell hidden">
+  <header class="topbar">
+    <a class="brand" href="#" data-page-link="home"><span>✿</span> BottleBloom</a>
+    <span class="topbar-tag">GROW • REUSE • BLOOM</span>
+  </header>
+
+  <main class="main-content">
+
+    <section id="home" class="page active">
+      <div class="home-hero">
+        <p class="eyebrow">YOUR LITTLE GREEN CORNER</p>
+        <h1>Welcome, <span id="welcomeName">Gardener</span>.</h1>
+        <p>Make room for something beautiful to grow.</p>
+      </div>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">A DAILY DISCOVERY</p><h2>Plant of the Day</h2></div>
+          <span class="section-symbol">✿</span>
+        </div>
+        <div id="dailyPlantCard" class="daily-plant-card"></div>
+      </section>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">A LITTLE GREEN WISDOM</p><h2>Daily Green Tip</h2></div>
+          <span class="section-symbol">☘</span>
+        </div>
+        <div class="tip-card"><span class="tip-icon">✧</span><p id="dailyTip"></p></div>
+      </section>
+    </section>
+
+    <section id="explore" class="page">
+      <div class="page-heading">
+        <p class="eyebrow">DISCOVER THE PLANT WORLD</p>
+        <h1>Explore</h1>
+        <p>Search plants by their common or scientific names.</p>
+      </div>
+      <div class="search-row">
+        <input id="plantSearch" type="search" placeholder="Try sage, rose or basil">
+        <button id="plantSearchButton" class="primary-btn">Search</button>
+      </div>
+      <p id="plantCount" class="result-count">Search the online plant database to begin.</p>
+      <div id="plantResults" class="plant-grid"></div>
+      <p id="noPlantsMessage" class="empty-state hidden">No results found. Check your spelling and internet connection.</p>
+    </section>
+
+    <section id="plantDetails" class="page">
+      <button id="backToExplore" class="back-btn">← Back to Explore</button>
+      <div id="plantDetailsContent"></div>
+    </section>
+
+    <section id="leaflens" class="page">
+      <div class="page-heading">
+        <p class="eyebrow">OBSERVE • UNDERSTAND • CARE</p>
+        <h1>LeafLens</h1>
+        <p>Upload a leaf photo, then select the signs you can see.</p>
+      </div>
+
+      <div class="feature-panel">
+        <div class="upload-area" id="uploadArea">
+          <div class="upload-symbol">⌁</div>
+          <h2>Take a closer look</h2>
+          <p>Choose a clear photo of the affected leaf.</p>
+          <label class="upload-button" for="leafPhoto">Choose Photo</label>
+          <input id="leafPhoto" type="file" accept="image/*" hidden>
+        </div>
+
+        <div id="previewArea" class="preview-area hidden">
+          <img id="leafPreview" alt="Uploaded leaf">
+          <button id="changePhotoButton" class="text-btn">Change photo</button>
+        </div>
+
+        <div id="symptomSection" class="symptom-section hidden">
+          <p class="eyebrow">WHAT CAN YOU SEE?</p>
+          <h2>Select all that apply</h2>
+          <p class="helper-text">You can select multiple symptoms. Choose “Looks Healthy” on its own.</p>
+          <div id="symptomOptions" class="symptom-grid"></div>
+          <button id="scanButton" class="primary-btn full-btn" disabled>Review Leaf Signs</button>
+        </div>
+      </div>
+
+      <section id="scanResult" class="result-panel hidden">
+        <p class="eyebrow">LEAFLENS OBSERVATION</p>
+        <h2 id="resultTitle">Your result</h2>
+        <p id="resultSummary"></p>
+        <div id="symptomResults"></div>
+        <p class="disclaimer">LeafLens is a guided symptom checker, not a confirmed diagnosis. Similar signs can have different causes.</p>
+        <button id="scanAgainButton" class="secondary-btn">Check another leaf</button>
+      </section>
+    </section>
+
+    <section id="plantsafe" class="page">
+      <div class="page-heading">
+        <p class="eyebrow">A MORE THOUGHTFUL GREEN HOME</p>
+        <h1>PlantSafe</h1>
+        <p>Check general plant-safety information for cats, dogs and young children.</p>
+      </div>
+      <div class="search-row">
+        <input id="safetySearch" type="search" placeholder="Enter a plant name, e.g. tulip">
+        <button id="safetySearchButton" class="primary-btn">Check</button>
+      </div>
+      <div id="safetyResult" class="safety-result">
+        <div class="empty-safety">
+          <span>♡</span>
+          <h2>Check before you bring it home</h2>
+          <p>Search a plant to see its general safety information.</p>
+        </div>
+      </div>
+      <p class="disclaimer">This is a limited reference, not a complete toxicity database. If ingestion is suspected, contact a medical professional or veterinarian promptly.</p>
+    </section>
+
+    <section id="reminders" class="page">
+      <div class="page-heading">
+        <p class="eyebrow">A LITTLE CARE, ON TIME</p>
+        <h1>Reminders</h1>
+        <p>Keep track of the care your plants need.</p>
+      </div>
+      <form id="reminderForm" class="form-panel">
+        <label for="reminderPlant">Plant name</label>
+        <input id="reminderPlant" required placeholder="e.g. Mint">
+        <label for="reminderTask">Reminder</label>
+        <select id="reminderTask" required>
+          <option value="">Choose a task</option>
+          <option>Watering</option>
+          <option>Check soil</option>
+          <option>Pruning</option>
+          <option>Fertilising</option>
+          <option>General care</option>
+        </select>
+        <div class="form-two">
+          <div><label for="reminderDate">Date</label><input id="reminderDate" type="date" required></div>
+          <div><label for="reminderTime">Time</label><input id="reminderTime" type="time" required></div>
+        </div>
+        <button class="primary-btn full-btn" type="submit">Save Reminder</button>
+      </form>
+      <div class="saved-section"><h2>Your reminders</h2><div id="reminderList"></div></div>
+    </section>
+
+    <section id="garden" class="page">
+      <div class="page-heading">
+        <p class="eyebrow">YOUR PLANTS, YOUR PROGRESS</p>
+        <h1>My Garden</h1>
+        <p>A simple place to keep the plants you are growing.</p>
+      </div>
+      <div class="garden-count-panel">
+        <span>🪴</span>
+        <div><strong id="gardenCount">0 plants</strong><p>Growing in your garden</p></div>
+      </div>
+      <form id="plantForm" class="form-panel">
+        <h2>Add a plant</h2>
+        <label for="newPlantName">Plant name</label>
+        <input id="newPlantName" required placeholder="e.g. Basil">
+        <label for="newPlantDate">Date added</label>
+        <input id="newPlantDate" type="date" required>
+        <button class="primary-btn full-btn" type="submit">Add to My Garden</button>
+      </form>
+      <div class="saved-section"><h2>Your plants</h2><div id="gardenList" class="garden-grid"></div></div>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" data-page="home"><span>⌂</span><small>Home</small></button>
+    <button class="nav-item" data-page="explore"><span>⌕</span><small>Explore</small></button>
+    <button class="nav-item" data-page="leaflens"><span>❋</span><small>LeafLens</small></button>
+    <button class="nav-item" data-page="plantsafe"><span>♡</span><small>PlantSafe</small></button>
+    <button class="nav-item" data-page="reminders"><span>◷</span><small>Reminders</small></button>
+    <button class="nav-item" data-page="garden"><span>♧</span><small>My Garden</small></button>
+  </nav>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
